@@ -114,7 +114,7 @@ class SudokuGame {
     toggleNoteMode() {
         this.isNoteMode = !this.isNoteMode;
         this.noteBtn.classList.toggle('active', this.isNoteMode);
-        this.noteBtn.querySelector('span').textContent = `筆記: ${this.isNoteMode ? '開' : '關'}`;
+        this.noteBtn.querySelector('span').textContent = '筆記';
     }
 
     togglePause() {
@@ -161,7 +161,7 @@ class SudokuGame {
         this.conflicts.clear();
         this.notes = Array.from({ length: 81 }, () => new Set());
         this.noteBtn.classList.remove('active');
-        this.noteBtn.querySelector('span').textContent = '筆記: 關';
+        this.noteBtn.querySelector('span').textContent = '筆記';
         this.pauseOverlay.classList.add('hidden');
         this.pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z"/></svg>';
         if (this.timerInterval) clearInterval(this.timerInterval);
