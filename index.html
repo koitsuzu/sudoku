@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Sudoku - 現代經典數獨</title>
+    <meta name="description" content="一個現代、美觀且具備進階功能的數獨遊戲。支援復原、數字追蹤與錯誤提示。">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header>
+            <h1>SUDOKU</h1>
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="label">難度:</span>
+                    <select id="difficulty-select" class="glass-select">
+                        <option value="easy">簡單</option>
+                        <option value="medium" selected>中等</option>
+                        <option value="hard">困難</option>
+                    </select>
+                </div>
+                <div class="status-item timer-container">
+                    <span class="label">時間:</span>
+                    <div class="timer-row">
+                        <span id="timer-display">00:00</span>
+                        <button id="pause-btn" class="icon-btn" title="暫停/繼續">
+                            <svg id="pause-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="game-area">
+            <div id="sudoku-container" class="sudoku-container">
+                <div id="sudoku-grid" class="sudoku-grid">
+                    <!-- 81 cells -->
+                </div>
+                <div id="pause-overlay" class="pause-overlay hidden">
+                    <button id="resume-btn">繼續遊戲</button>
+                </div>
+            </div>
+
+            <div class="controls-side">
+                <div class="numpad" id="numpad">
+                    <!-- Buttons 1-9 -->
+                </div>
+                <div class="action-buttons">
+                    <button id="note-btn" title="筆記模式 (N)">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                        </svg>
+                        <span>筆記: 關</span>
+                    </button>
+                    <button id="undo-btn" title="復原 (Undo)">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M12.5,8C9.85,8 7.45,9 5.6,10.6L2,7V16H11L7.38,12.38C8.77,11.22 10.54,10.5 12.5,10.5C16.04,10.5 19.05,12.81 20.1,16L22.47,15.22C21.08,11.03 17.15,8 12.5,8Z" />
+                        </svg>
+                        <span>復原</span>
+                    </button>
+                    <button id="hint-btn" title="提示 (Hint)">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z" />
+                        </svg>
+                        <span>提示</span>
+                    </button>
+                    <button id="new-game-btn" title="新遊戲">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor"
+                                d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+                        </svg>
+                        <span>新遊戲</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div id="win-modal" class="modal hidden">
+            <div class="modal-content glass">
+                <h2>恭喜獲勝！</h2>
+                <p>完美的表現，挑戰下一關吧！</p>
+                <button id="play-again-btn">再玩一次</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
