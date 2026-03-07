@@ -44,6 +44,20 @@
                         </button>
                     </div>
                 </div>
+                <div class="status-item">
+                    <span class="label">模式:</span>
+                    <button id="theme-btn" class="icon-btn" title="切換深淺模式">
+                        <svg id="theme-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <!-- Moon icon for dark mode (to switch to light) -->
+                            <path fill="currentColor"
+                                d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="status-item clickable-status" id="profile-btn" role="button" tabindex="0" title="查看成長記錄層">
+                    <span class="label">等級</span>
+                    <span id="profile-btn-text">🌱 見習者</span>
+                </div>
             </div>
         </header>
 
@@ -53,7 +67,6 @@
                     <!-- 81 cells -->
                 </div>
                 <div id="pause-overlay" class="pause-overlay hidden">
-                    <button id="resume-btn">繼續遊戲</button>
                 </div>
             </div>
 
@@ -94,11 +107,72 @@
             </div>
         </section>
 
-        <div id="win-modal" class="modal hidden">
-            <div class="modal-content glass">
-                <h2>恭喜獲勝！</h2>
-                <p>完美的表現，挑戰下一關吧！</p>
-                <button id="play-again-btn">再玩一次</button>
+
+        <!-- XP Result Card -->
+        <div id="result-card" class="modal hidden">
+            <div class="modal-content result-card-content glass">
+                <div class="result-header">
+                    <span class="result-check">✅</span>
+                    <h2>完成！</h2>
+                </div>
+
+                <div class="result-level-row">
+                    <span id="result-level-num" class="result-level-badge">Lv.1</span>
+                    <span id="result-level-title" class="result-level-title">🌱 見習者</span>
+                </div>
+
+                <div id="result-new-best" class="result-badge hidden">🟡 新紀錄！最佳時間</div>
+                <div id="result-levelup" class="result-badge levelup hidden"></div>
+
+                <div class="result-xp-label">
+                    <span id="result-xp" class="result-xp-earned">+0 XP</span>
+                    <span class="result-streak">🔥 連勝 <span id="result-streak">1</span> 局</span>
+                </div>
+
+                <div class="result-xp-bar-track" id="result-xp-bar">
+                    <div class="result-xp-bar-fill" id="result-xp-bar-fill"></div>
+                </div>
+
+                <div class="result-actions">
+                    <button id="play-again-btn">再玩一次</button>
+                    <button id="result-close-btn" class="secondary">關閉</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Modal -->
+        <div id="profile-modal" class="modal hidden">
+            <div class="modal-content profile-modal-content glass">
+                <button id="profile-close-btn" class="modal-close-btn">×</button>
+                <h2 class="profile-title">📊 我的成長記錄</h2>
+
+                <div class="profile-level-row">
+                    <span id="profile-level-badge" class="result-level-badge">Lv.1</span>
+                    <span id="profile-level-title" class="result-level-title">🌱 見習者</span>
+                </div>
+
+                <div class="profile-xp-bar-track">
+                    <div class="result-xp-bar-fill" id="profile-xp-bar-fill"></div>
+                </div>
+                <p class="profile-xp-text"><span id="profile-total-xp">0</span> / <span id="profile-next-xp">200</span>
+                    XP</p>
+
+                <div class="profile-stats">
+                    <div class="profile-stat"><span class="stat-label">總場次</span><span id="pstat-total">0</span></div>
+                    <div class="profile-stat"><span class="stat-label">勝利</span><span id="pstat-wins">0</span></div>
+                    <div class="profile-stat"><span class="stat-label">🔥 連勝</span><span id="pstat-streak">0</span>
+                    </div>
+                    <div class="profile-stat"><span class="stat-label">簡單最佳</span><span id="pstat-easy">-</span></div>
+                    <div class="profile-stat"><span class="stat-label">中等最佳</span><span id="pstat-medium">-</span></div>
+                    <div class="profile-stat"><span class="stat-label">困難最佳</span><span id="pstat-hard">-</span></div>
+                </div>
+
+                <div class="profile-actions">
+                    <button id="export-btn">💾 匹出進度</button>
+                    <label for="import-file" class="btn-label secondary">📥 匯入進度</label>
+                    <input id="import-file" type="file" accept=".json" style="display:none">
+                </div>
+                <p class="profile-hint">匯出為 .json 檔案，換機或清除眀覽器後可匯入還原</p>
             </div>
         </div>
     </main>
