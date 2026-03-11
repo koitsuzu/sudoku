@@ -612,6 +612,15 @@ body.light-mode .pause-overlay.see-through {
         max-width: 400px;
         height: auto;
     }
+
+    .cell .note-grid {
+        padding: 0;
+    }
+
+    .cell .note-item {
+        font-size: 0.5rem;
+        line-height: 1;
+    }
 }
 
 /* =================== RESULT CARD =================== */
