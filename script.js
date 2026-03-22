@@ -553,8 +553,8 @@ class SudokuGame {
         const barFill = document.getElementById('result-xp-bar-fill');
         barFill.style.width = '0%';
 
-        const newBest = document.getElementById('result-new-best');
-        newBest.classList.toggle('hidden', !result.isNewBest);
+        const resultTime = document.getElementById('result-time');
+        resultTime.textContent = `⏱️ 最終完成時間：${window.progressSystem.formatTime(this.timer)}`;
 
         const levelUp = document.getElementById('result-levelup');
         if (result.leveledUp) {
